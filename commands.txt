@@ -1,0 +1,2 @@
+Running post
+docker run --name drizzle-postgres -e POSTGRES_PASSWORD=mypassword -d -p 5433:5432 postgres
