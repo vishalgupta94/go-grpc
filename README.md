@@ -14,12 +14,13 @@ Replace `<containerId>` with your actual container ID:
 
 ```bash
 docker exec -e PGPASSWORD=mypassword -it <containerId> psql -U postgres -d postgres
+docker exec -e PGPASSWORD=mypassword -it 4aeb0ec8b9f0 psql -U postgres -d postgres
 ```
 
 Example:
 
 ```bash
-docker exec -e PGPASSWORD=mypassword -it 27f0ca9d76b5 psql -U postgres -d postgres
+docker exec -e PGPASSWORD=mypassword -it 1d94a91a5d91 psql -U postgres -d postgres
 ```
 
 ---
