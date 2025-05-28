@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"service/order/internal/adapters/db"
 	"service/order/internal/application/core/domain"
 )
@@ -16,12 +17,12 @@ func main() {
 		CustomerID: 100,
 		Status:     "Pending",
 		OrderItems: []domain.OrderItem{
-			domain.OrderItem{
+			{
 				ProductCode: "ProductCode1",
 				Quantity:    100,
 				UnitPrice:   100,
 			},
-			domain.OrderItem{
+			{
 				ProductCode: "ProductCode2",
 				Quantity:    200,
 				UnitPrice:   200,
@@ -33,4 +34,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	orderGet, err := adapter.Get(order.ID)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("order", orderGet)
 }
