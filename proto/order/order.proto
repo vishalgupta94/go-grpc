@@ -3,3 +3,22 @@ package order;
 
 option go_package = "service/proto/order";
 
+
+message OrderItem{
+    string ProductCode = 1; 
+    float UnitPrice = 2;
+    int64 Quantity = 3;
+ };
+
+message Order{
+   int64 UserId = 1;
+   repeated OrderItem OrderItems= 2;
+}
+
+message OrderResponse{
+    int64 responseId = 1;
+};
+
+service Orders {
+    rpc Create(Order) returns (OrderResponse);
+}
