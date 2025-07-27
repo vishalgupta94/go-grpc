@@ -1,0 +1,30 @@
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+func main() {
+	wg := sync.WaitGroup{}
+	fmt.Println("hello world")
+	msgChannel := make(chan int)
+	wg.Add(1)
+	go receiver(msgChannel, &wg)
+
+	for i := range 6 {
+		msgChannel <- i
+	}
+	msgChannel <- -1
+	wg.Wait()
+}
+
+func receiver(message chan int, wg *sync.WaitGroup) {
+	var msg int
+	msg = 0
+	for msg != -1 {
+		msg = <-message
+		fmt.Println("Received: ", msg)
+	}
+	wg.Done()
+}
